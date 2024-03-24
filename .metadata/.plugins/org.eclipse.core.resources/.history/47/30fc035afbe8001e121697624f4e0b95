@@ -1,0 +1,22 @@
+package com.sathya.spring;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+public class App 
+{
+	 private static final java.util.logging.Logger logger = LoggerFactory.getLogger(App.class);
+    public static void main( String[] args )
+    {
+    	
+  
+    	        logger.debug("Debug message");
+    	        logger.info("Info message");
+    	        logger.warning("Warning message");
+    	        logger.error("Error message");
+    	    }
+    	
+
+    }
+

@@ -1,0 +1,26 @@
+package com.sathya.spring;
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.classic.joran.JoranConfigurator;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
+import javax.annotation.PostConstruct;
+
+@Configuration
+@Slf4j
+public class JavaConfig2 {
+
+@PostConstruct
+public void configureLogback() {
+    LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
+    try {
+        JoranConfigurator configurator = new JoranConfigurator();
+        configurator.setContext(context);
+        context.reset(); // Clear any existing configuration
+        configurator.doConfigure(LoggingConfiguration.class.getResourceAsStream("/logback-spring.xml"));
+    } catch (Exception ex) {
+        log.error("Error configuring Logback", ex);
+    }
+}
+}
+
+
